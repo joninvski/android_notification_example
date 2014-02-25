@@ -36,6 +36,8 @@ public class MainActivity extends Activity implements SelectionListener {
 	private static final long TWO_MIN = 2 * 60 * 1000;
 	private static final int UNSELECTED = -1;
 
+	final IntentFilter intentFilter = new IntentFilter(DATA_REFRESHED_ACTION);
+
 	private FragmentManager mFragmentManager;
 	private FriendsFragment mFriendsFragment;
 	private boolean mIsFresh;
@@ -84,11 +86,9 @@ public class MainActivity extends Activity implements SelectionListener {
 			// TODO:
 			// Show a Toast Notification to inform user that
 			// the app is "Downloading Tweets from Network"
-			log ("Issuing Toast Message");
+			log("Issuing Toast Message");
 			Toast.makeText(getApplicationContext(), R.string.greeting,
 					Toast.LENGTH_SHORT).show();
-
-
 
 			// TODO:
 			// Start new AsyncTask to download Tweets from network
@@ -96,8 +96,6 @@ public class MainActivity extends Activity implements SelectionListener {
 
 			downloaderTask.execute(new String[] { URL_LGAGA, URL_RBLACK,
 					URL_TSWIFT });
-
-
 
 			// Set up a BroadcastReceiver to receive an Intent when download
 			// finishes.
@@ -186,9 +184,9 @@ public class MainActivity extends Activity implements SelectionListener {
 		// TODO:
 		// Register the BroadcastReceiver to receive a
 		// DATA_REFRESHED_ACTION broadcast
-		final IntentFilter intentFilter = new IntentFilter(
-				DATA_REFRESHED_ACTION);
-		registerReceiver(mRefreshReceiver, intentFilter);
+		if (mRefreshReceiver != null) {
+			registerReceiver(mRefreshReceiver, intentFilter);
+		}
 	}
 
 	@Override
@@ -196,7 +194,9 @@ public class MainActivity extends Activity implements SelectionListener {
 
 		// TODO:
 		// Unregister the BroadcastReceiver
-		unregisterReceiver(mRefreshReceiver);
+		if (mRefreshReceiver != null) {
+			unregisterReceiver(mRefreshReceiver);
+		}
 		super.onPause();
 
 	}
