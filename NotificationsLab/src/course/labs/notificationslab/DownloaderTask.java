@@ -52,8 +52,6 @@ public class DownloaderTask extends AsyncTask<String, Void, String[]> {
 	@Override
 	protected String[] doInBackground(String... urlParameters) {
 		log("Entered doInBackground()");
-		log("Entered2 doInBackground()");
-		log("Entered2 doInBackground()");
 
 		return download(urlParameters);
 
@@ -121,11 +119,11 @@ public class DownloaderTask extends AsyncTask<String, Void, String[]> {
 	@Override
 	protected void onPostExecute(String[] result) {
 		super.onPostExecute(result);
-		
+
 		if (mParentActivity != null) {
 			mParentActivity.setRefreshed(result);
 		}
-		
+
 	}
 
 	// If necessary, notifies the user that the tweet downloads are complete.
@@ -150,14 +148,13 @@ public class DownloaderTask extends AsyncTask<String, Void, String[]> {
 		// active and in the foreground. Creates a new BroadcastReceiver
 		// to receive a result indicating the state of MainActivity
 
-		// The Action for this broadcast Intent is
-		// MainActivity.DATA_REFRESHED_ACTION
-		// The result Activity.RESULT_OK, indicates that MainActivity is active
-		// and
+		// The Action for this broadcast Intent is MainActivity.DATA_REFRESHED_ACTION
+		// The result Activity.RESULT_OK, indicates that MainActivity is active and
 		// in the foreground.
 
-		mApplicationContext.sendOrderedBroadcast(new Intent(
-				MainActivity.DATA_REFRESHED_ACTION), null,
+		mApplicationContext.sendOrderedBroadcast(
+				new Intent(MainActivity.DATA_REFRESHED_ACTION),
+				null,
 				new BroadcastReceiver() {
 
 					final String failMsg = "Download has failed. Please retry Later.";
@@ -171,10 +168,8 @@ public class DownloaderTask extends AsyncTask<String, Void, String[]> {
 						// TODO: Check whether the result code is RESULT_OK
 
 						if ( getResultCode() == Activity.RESULT_OK) {
-							log("MINE - Result code was OK");
 
-
-							// TODO: If so, create a PendingIntent using the
+							// TODO:  If so, create a PendingIntent using the
 							// restartMainActivityIntent and set its flags
 							// to FLAG_UPDATE_CURRENT
 
@@ -202,12 +197,13 @@ public class DownloaderTask extends AsyncTask<String, Void, String[]> {
 										.setTextViewText(R.id.text, failMsg);
 							}
 
+
+
 							// TODO: Use the Notification.Builder class to
 							// create the Notification. You will have to set
 							// several pieces of information. You can use
 							// android.R.drawable.stat_sys_warning
-							// for the small icon. You should also
-							// setAutoCancel(true).
+							// for the small icon. You should also setAutoCancel(true).
 
 							Notification.Builder notificationBuilder = new Notification.Builder(
 									context)
@@ -224,10 +220,16 @@ public class DownloaderTask extends AsyncTask<String, Void, String[]> {
 							mNotificationManager.notify(MY_NOTIFICATION_ID,
 									notificationBuilder.build());
 
+
+
 							log("Notification Area Notification sent");
 						}
 					}
-				}, null, 0, null, null);
+				},
+				null,
+				0,
+				null,
+				null);
 	}
 
 	// Saves the tweets to a file

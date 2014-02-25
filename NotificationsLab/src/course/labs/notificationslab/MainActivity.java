@@ -5,7 +5,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -85,9 +84,11 @@ public class MainActivity extends Activity implements SelectionListener {
 			// TODO:
 			// Show a Toast Notification to inform user that
 			// the app is "Downloading Tweets from Network"
-			log("Issuing Toast Message");
+			log ("Issuing Toast Message");
 			Toast.makeText(getApplicationContext(), R.string.greeting,
 					Toast.LENGTH_SHORT).show();
+
+
 
 			// TODO:
 			// Start new AsyncTask to download Tweets from network
@@ -95,6 +96,8 @@ public class MainActivity extends Activity implements SelectionListener {
 
 			downloaderTask.execute(new String[] { URL_LGAGA, URL_RBLACK,
 					URL_TSWIFT });
+
+
 
 			// Set up a BroadcastReceiver to receive an Intent when download
 			// finishes.
@@ -105,7 +108,7 @@ public class MainActivity extends Activity implements SelectionListener {
 					log("BroadcastIntent received in MainActivity");
 
 					// TODO:
-					// Check to make sure this is an ordered broadcast????
+					// Check to make sure this is an ordered broadcast
 					// Let sender know that the Intent was received
 					// by setting result code to RESULT_OK
 					if (intent.getAction() == DATA_REFRESHED_ACTION) {
@@ -113,6 +116,7 @@ public class MainActivity extends Activity implements SelectionListener {
 					}
 				}
 			};
+
 		} else {
 
 			loadTweetsFromFile();
