@@ -19,9 +19,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import android.view.View;
 import android.widget.RemoteViews;
-import android.widget.Toast;
 
 public class DownloaderTask extends AsyncTask<String, Void, String[]> {
 
@@ -166,8 +164,7 @@ public class DownloaderTask extends AsyncTask<String, Void, String[]> {
 						log("Entered result receiver's onReceive() method");
 
 						// TODO: Check whether the result code is RESULT_OK
-
-						if ( getResultCode() == Activity.RESULT_OK) {
+						if ( getResultCode() != Activity.RESULT_OK) {
 
 							// TODO:  If so, create a PendingIntent using the
 							// restartMainActivityIntent and set its flags
