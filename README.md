@@ -75,7 +75,8 @@ Sends an ordered broadcast:
 				null);
 	}
 
-Notification Area notification
+Notification Area notification:
+
     // Uses R.layout.custom_notification for the layout of the notification View.
     RemoteViews mContentView = new RemoteViews(mApplicationContext.getPackageName(), R.layout.custom_notification);
 
