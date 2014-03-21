@@ -7,7 +7,7 @@ env:
   - ANDROID_SDK=android-sdk_r22.6.1-linux.tgz
 
 matrix:
-- ANDROID_SDKS=android-19,sysimg-19  ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
+  - ANDROID_SDKS=android-19,sysimg-19  ANDROID_TARGET=android-19  ANDROID_ABI=armeabi-v7a
 
 branches:
   only:
