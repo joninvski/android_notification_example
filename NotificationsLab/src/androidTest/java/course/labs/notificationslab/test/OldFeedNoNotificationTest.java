@@ -37,7 +37,7 @@ public class OldFeedNoNotificationTest extends
 				.getView(course.labs.notificationslab.R.id.age_tweets_button));
 
 		solo.sleep(shortDelay);
-		
+
 		// Click on Start Main Activty
 		solo.clickOnView(solo
 				.getView(course.labs.notificationslab.R.id.start_main_button));
@@ -55,6 +55,8 @@ public class OldFeedNoNotificationTest extends
 		// Assert that: 'feed_view' is shown
 		assertTrue("feed_view' is not shown!", solo.waitForView(solo
 				.getView(course.labs.notificationslab.R.id.feed_view)));
+
+		solo.sleep(shortDelay);
 
 		// Assert that: 'Please wait while we download the Tweets!' is shown
 		assertTrue("'Please wait while we download the Tweets!' is not shown!",
