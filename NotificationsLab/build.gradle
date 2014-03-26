@@ -6,6 +6,7 @@ buildscript {
         classpath 'com.android.tools.build:gradle:0.9.+'
     }
 }
+
 apply plugin: 'android'
 
 repositories {
@@ -28,5 +29,6 @@ android {
 
 dependencies {
 	compile 'com.android.support:appcompat-v7:+'
-    androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.0.1'
+    androidTestCompile 'com.jayway.android.robotium:robotium-solo:5.+'
 }
+
