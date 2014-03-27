@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/joninvski/android_notification_example.svg?branch=master)](https://travis-ci.org/joninvski/android_notification_example)
+
 Android notification example
 ============================
 
